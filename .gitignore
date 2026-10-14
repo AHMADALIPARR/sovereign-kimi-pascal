@@ -1,0 +1,6 @@
+build/
+tests/parity_rust/target/
+tests/parity_ffi/target/
+tests/*.bin
+*.o
+*.ppu

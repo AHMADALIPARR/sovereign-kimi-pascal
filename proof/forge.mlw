@@ -1,0 +1,12 @@
+module Forge
+use import int.Int
+use import ref.Ref
+predicate reg_ok (r limit:int) = 0 <= r /\ r < limit
+predicate aligned (a:int) = mod a 4096 = 0
+let rec butterfly (x:int) (n:int) : int variant {n} =
+  if n <= 0 then x else butterfly (x + x) (n-1)
+let gate (x g:int) = x*g
+let delta (x p:int) = x-p
+let recur (s d g:int) = s + gate d g
+lemma butterfly_nonnegative: forall x:int. x >= 0 -> butterfly x 1 >= 0 = by omega
+end

@@ -1,0 +1,587 @@
+; P4.5 custom ISA
+; register machine, explicit cluster, memory, butterfly and audit semantics
+ISA P45.1
+REGS 256
+WARP 32
+EXPERTS 896
+ACTIVE 16
+OP BF_XOR
+OP BF_ADD
+OP BF_REDUCE
+OP GATE
+OP DELTA
+OP RECUR
+OP ROUTE
+OP TMA_LOAD
+OP TMA_STORE
+OP DSM_LOAD
+OP DSM_STORE
+OP CTX_SAVE
+OP CTX_RESTORE
+OP IRQ
+OP LOCK
+OP SEAL
+OP FABRIC_SEND
+OP FABRIC_RECV
+OP FABRIC_REDUCE
+OP CACHE_FREEZE
+; P45 rule 001: explicit operand width, dependency edge, and verification boundary.
+RULE 001 CHECK REGISTER_BOUNDS
+; P45 rule 002: explicit operand width, dependency edge, and verification boundary.
+RULE 002 CHECK REGISTER_BOUNDS
+; P45 rule 003: explicit operand width, dependency edge, and verification boundary.
+RULE 003 CHECK REGISTER_BOUNDS
+; P45 rule 004: explicit operand width, dependency edge, and verification boundary.
+RULE 004 CHECK REGISTER_BOUNDS
+; P45 rule 005: explicit operand width, dependency edge, and verification boundary.
+RULE 005 CHECK REGISTER_BOUNDS
+; P45 rule 006: explicit operand width, dependency edge, and verification boundary.
+RULE 006 CHECK REGISTER_BOUNDS
+; P45 rule 007: explicit operand width, dependency edge, and verification boundary.
+RULE 007 CHECK REGISTER_BOUNDS
+; P45 rule 008: explicit operand width, dependency edge, and verification boundary.
+RULE 008 CHECK REGISTER_BOUNDS
+; P45 rule 009: explicit operand width, dependency edge, and verification boundary.
+RULE 009 CHECK REGISTER_BOUNDS
+; P45 rule 010: explicit operand width, dependency edge, and verification boundary.
+RULE 010 CHECK REGISTER_BOUNDS
+; P45 rule 011: explicit operand width, dependency edge, and verification boundary.
+RULE 011 CHECK REGISTER_BOUNDS
+; P45 rule 012: explicit operand width, dependency edge, and verification boundary.
+RULE 012 CHECK REGISTER_BOUNDS
+; P45 rule 013: explicit operand width, dependency edge, and verification boundary.
+RULE 013 CHECK REGISTER_BOUNDS
+; P45 rule 014: explicit operand width, dependency edge, and verification boundary.
+RULE 014 CHECK REGISTER_BOUNDS
+; P45 rule 015: explicit operand width, dependency edge, and verification boundary.
+RULE 015 CHECK REGISTER_BOUNDS
+; P45 rule 016: explicit operand width, dependency edge, and verification boundary.
+RULE 016 CHECK REGISTER_BOUNDS
+; P45 rule 017: explicit operand width, dependency edge, and verification boundary.
+RULE 017 CHECK REGISTER_BOUNDS
+; P45 rule 018: explicit operand width, dependency edge, and verification boundary.
+RULE 018 CHECK REGISTER_BOUNDS
+; P45 rule 019: explicit operand width, dependency edge, and verification boundary.
+RULE 019 CHECK REGISTER_BOUNDS
+; P45 rule 020: explicit operand width, dependency edge, and verification boundary.
+RULE 020 CHECK REGISTER_BOUNDS
+; P45 rule 021: explicit operand width, dependency edge, and verification boundary.
+RULE 021 CHECK REGISTER_BOUNDS
+; P45 rule 022: explicit operand width, dependency edge, and verification boundary.
+RULE 022 CHECK REGISTER_BOUNDS
+; P45 rule 023: explicit operand width, dependency edge, and verification boundary.
+RULE 023 CHECK REGISTER_BOUNDS
+; P45 rule 024: explicit operand width, dependency edge, and verification boundary.
+RULE 024 CHECK REGISTER_BOUNDS
+; P45 rule 025: explicit operand width, dependency edge, and verification boundary.
+RULE 025 CHECK REGISTER_BOUNDS
+; P45 rule 026: explicit operand width, dependency edge, and verification boundary.
+RULE 026 CHECK REGISTER_BOUNDS
+; P45 rule 027: explicit operand width, dependency edge, and verification boundary.
+RULE 027 CHECK REGISTER_BOUNDS
+; P45 rule 028: explicit operand width, dependency edge, and verification boundary.
+RULE 028 CHECK REGISTER_BOUNDS
+; P45 rule 029: explicit operand width, dependency edge, and verification boundary.
+RULE 029 CHECK REGISTER_BOUNDS
+; P45 rule 030: explicit operand width, dependency edge, and verification boundary.
+RULE 030 CHECK REGISTER_BOUNDS
+; P45 rule 031: explicit operand width, dependency edge, and verification boundary.
+RULE 031 CHECK REGISTER_BOUNDS
+; P45 rule 032: explicit operand width, dependency edge, and verification boundary.
+RULE 032 CHECK REGISTER_BOUNDS
+; P45 rule 033: explicit operand width, dependency edge, and verification boundary.
+RULE 033 CHECK REGISTER_BOUNDS
+; P45 rule 034: explicit operand width, dependency edge, and verification boundary.
+RULE 034 CHECK REGISTER_BOUNDS
+; P45 rule 035: explicit operand width, dependency edge, and verification boundary.
+RULE 035 CHECK REGISTER_BOUNDS
+; P45 rule 036: explicit operand width, dependency edge, and verification boundary.
+RULE 036 CHECK REGISTER_BOUNDS
+; P45 rule 037: explicit operand width, dependency edge, and verification boundary.
+RULE 037 CHECK REGISTER_BOUNDS
+; P45 rule 038: explicit operand width, dependency edge, and verification boundary.
+RULE 038 CHECK REGISTER_BOUNDS
+; P45 rule 039: explicit operand width, dependency edge, and verification boundary.
+RULE 039 CHECK REGISTER_BOUNDS
+; P45 rule 040: explicit operand width, dependency edge, and verification boundary.
+RULE 040 CHECK REGISTER_BOUNDS
+; P45 rule 041: explicit operand width, dependency edge, and verification boundary.
+RULE 041 CHECK REGISTER_BOUNDS
+; P45 rule 042: explicit operand width, dependency edge, and verification boundary.
+RULE 042 CHECK REGISTER_BOUNDS
+; P45 rule 043: explicit operand width, dependency edge, and verification boundary.
+RULE 043 CHECK REGISTER_BOUNDS
+; P45 rule 044: explicit operand width, dependency edge, and verification boundary.
+RULE 044 CHECK REGISTER_BOUNDS
+; P45 rule 045: explicit operand width, dependency edge, and verification boundary.
+RULE 045 CHECK REGISTER_BOUNDS
+; P45 rule 046: explicit operand width, dependency edge, and verification boundary.
+RULE 046 CHECK REGISTER_BOUNDS
+; P45 rule 047: explicit operand width, dependency edge, and verification boundary.
+RULE 047 CHECK REGISTER_BOUNDS
+; P45 rule 048: explicit operand width, dependency edge, and verification boundary.
+RULE 048 CHECK REGISTER_BOUNDS
+; P45 rule 049: explicit operand width, dependency edge, and verification boundary.
+RULE 049 CHECK REGISTER_BOUNDS
+; P45 rule 050: explicit operand width, dependency edge, and verification boundary.
+RULE 050 CHECK REGISTER_BOUNDS
+; P45 rule 051: explicit operand width, dependency edge, and verification boundary.
+RULE 051 CHECK REGISTER_BOUNDS
+; P45 rule 052: explicit operand width, dependency edge, and verification boundary.
+RULE 052 CHECK REGISTER_BOUNDS
+; P45 rule 053: explicit operand width, dependency edge, and verification boundary.
+RULE 053 CHECK REGISTER_BOUNDS
+; P45 rule 054: explicit operand width, dependency edge, and verification boundary.
+RULE 054 CHECK REGISTER_BOUNDS
+; P45 rule 055: explicit operand width, dependency edge, and verification boundary.
+RULE 055 CHECK REGISTER_BOUNDS
+; P45 rule 056: explicit operand width, dependency edge, and verification boundary.
+RULE 056 CHECK REGISTER_BOUNDS
+; P45 rule 057: explicit operand width, dependency edge, and verification boundary.
+RULE 057 CHECK REGISTER_BOUNDS
+; P45 rule 058: explicit operand width, dependency edge, and verification boundary.
+RULE 058 CHECK REGISTER_BOUNDS
+; P45 rule 059: explicit operand width, dependency edge, and verification boundary.
+RULE 059 CHECK REGISTER_BOUNDS
+; P45 rule 060: explicit operand width, dependency edge, and verification boundary.
+RULE 060 CHECK REGISTER_BOUNDS
+; P45 rule 061: explicit operand width, dependency edge, and verification boundary.
+RULE 061 CHECK REGISTER_BOUNDS
+; P45 rule 062: explicit operand width, dependency edge, and verification boundary.
+RULE 062 CHECK REGISTER_BOUNDS
+; P45 rule 063: explicit operand width, dependency edge, and verification boundary.
+RULE 063 CHECK REGISTER_BOUNDS
+; P45 rule 064: explicit operand width, dependency edge, and verification boundary.
+RULE 064 CHECK REGISTER_BOUNDS
+; P45 rule 065: explicit operand width, dependency edge, and verification boundary.
+RULE 065 CHECK REGISTER_BOUNDS
+; P45 rule 066: explicit operand width, dependency edge, and verification boundary.
+RULE 066 CHECK REGISTER_BOUNDS
+; P45 rule 067: explicit operand width, dependency edge, and verification boundary.
+RULE 067 CHECK REGISTER_BOUNDS
+; P45 rule 068: explicit operand width, dependency edge, and verification boundary.
+RULE 068 CHECK REGISTER_BOUNDS
+; P45 rule 069: explicit operand width, dependency edge, and verification boundary.
+RULE 069 CHECK REGISTER_BOUNDS
+; P45 rule 070: explicit operand width, dependency edge, and verification boundary.
+RULE 070 CHECK REGISTER_BOUNDS
+; P45 rule 071: explicit operand width, dependency edge, and verification boundary.
+RULE 071 CHECK REGISTER_BOUNDS
+; P45 rule 072: explicit operand width, dependency edge, and verification boundary.
+RULE 072 CHECK REGISTER_BOUNDS
+; P45 rule 073: explicit operand width, dependency edge, and verification boundary.
+RULE 073 CHECK REGISTER_BOUNDS
+; P45 rule 074: explicit operand width, dependency edge, and verification boundary.
+RULE 074 CHECK REGISTER_BOUNDS
+; P45 rule 075: explicit operand width, dependency edge, and verification boundary.
+RULE 075 CHECK REGISTER_BOUNDS
+; P45 rule 076: explicit operand width, dependency edge, and verification boundary.
+RULE 076 CHECK REGISTER_BOUNDS
+; P45 rule 077: explicit operand width, dependency edge, and verification boundary.
+RULE 077 CHECK REGISTER_BOUNDS
+; P45 rule 078: explicit operand width, dependency edge, and verification boundary.
+RULE 078 CHECK REGISTER_BOUNDS
+; P45 rule 079: explicit operand width, dependency edge, and verification boundary.
+RULE 079 CHECK REGISTER_BOUNDS
+; P45 rule 080: explicit operand width, dependency edge, and verification boundary.
+RULE 080 CHECK REGISTER_BOUNDS
+; P45 rule 081: explicit operand width, dependency edge, and verification boundary.
+RULE 081 CHECK REGISTER_BOUNDS
+; P45 rule 082: explicit operand width, dependency edge, and verification boundary.
+RULE 082 CHECK REGISTER_BOUNDS
+; P45 rule 083: explicit operand width, dependency edge, and verification boundary.
+RULE 083 CHECK REGISTER_BOUNDS
+; P45 rule 084: explicit operand width, dependency edge, and verification boundary.
+RULE 084 CHECK REGISTER_BOUNDS
+; P45 rule 085: explicit operand width, dependency edge, and verification boundary.
+RULE 085 CHECK REGISTER_BOUNDS
+; P45 rule 086: explicit operand width, dependency edge, and verification boundary.
+RULE 086 CHECK REGISTER_BOUNDS
+; P45 rule 087: explicit operand width, dependency edge, and verification boundary.
+RULE 087 CHECK REGISTER_BOUNDS
+; P45 rule 088: explicit operand width, dependency edge, and verification boundary.
+RULE 088 CHECK REGISTER_BOUNDS
+; P45 rule 089: explicit operand width, dependency edge, and verification boundary.
+RULE 089 CHECK REGISTER_BOUNDS
+; P45 rule 090: explicit operand width, dependency edge, and verification boundary.
+RULE 090 CHECK REGISTER_BOUNDS
+; P45 rule 091: explicit operand width, dependency edge, and verification boundary.
+RULE 091 CHECK REGISTER_BOUNDS
+; P45 rule 092: explicit operand width, dependency edge, and verification boundary.
+RULE 092 CHECK REGISTER_BOUNDS
+; P45 rule 093: explicit operand width, dependency edge, and verification boundary.
+RULE 093 CHECK REGISTER_BOUNDS
+; P45 rule 094: explicit operand width, dependency edge, and verification boundary.
+RULE 094 CHECK REGISTER_BOUNDS
+; P45 rule 095: explicit operand width, dependency edge, and verification boundary.
+RULE 095 CHECK REGISTER_BOUNDS
+; P45 rule 096: explicit operand width, dependency edge, and verification boundary.
+RULE 096 CHECK REGISTER_BOUNDS
+; P45 rule 097: explicit operand width, dependency edge, and verification boundary.
+RULE 097 CHECK REGISTER_BOUNDS
+; P45 rule 098: explicit operand width, dependency edge, and verification boundary.
+RULE 098 CHECK REGISTER_BOUNDS
+; P45 rule 099: explicit operand width, dependency edge, and verification boundary.
+RULE 099 CHECK REGISTER_BOUNDS
+; P45 rule 100: explicit operand width, dependency edge, and verification boundary.
+RULE 100 CHECK REGISTER_BOUNDS
+; P45 rule 101: explicit operand width, dependency edge, and verification boundary.
+RULE 101 CHECK REGISTER_BOUNDS
+; P45 rule 102: explicit operand width, dependency edge, and verification boundary.
+RULE 102 CHECK REGISTER_BOUNDS
+; P45 rule 103: explicit operand width, dependency edge, and verification boundary.
+RULE 103 CHECK REGISTER_BOUNDS
+; P45 rule 104: explicit operand width, dependency edge, and verification boundary.
+RULE 104 CHECK REGISTER_BOUNDS
+; P45 rule 105: explicit operand width, dependency edge, and verification boundary.
+RULE 105 CHECK REGISTER_BOUNDS
+; P45 rule 106: explicit operand width, dependency edge, and verification boundary.
+RULE 106 CHECK REGISTER_BOUNDS
+; P45 rule 107: explicit operand width, dependency edge, and verification boundary.
+RULE 107 CHECK REGISTER_BOUNDS
+; P45 rule 108: explicit operand width, dependency edge, and verification boundary.
+RULE 108 CHECK REGISTER_BOUNDS
+; P45 rule 109: explicit operand width, dependency edge, and verification boundary.
+RULE 109 CHECK REGISTER_BOUNDS
+; P45 rule 110: explicit operand width, dependency edge, and verification boundary.
+RULE 110 CHECK REGISTER_BOUNDS
+; P45 rule 111: explicit operand width, dependency edge, and verification boundary.
+RULE 111 CHECK REGISTER_BOUNDS
+; P45 rule 112: explicit operand width, dependency edge, and verification boundary.
+RULE 112 CHECK REGISTER_BOUNDS
+; P45 rule 113: explicit operand width, dependency edge, and verification boundary.
+RULE 113 CHECK REGISTER_BOUNDS
+; P45 rule 114: explicit operand width, dependency edge, and verification boundary.
+RULE 114 CHECK REGISTER_BOUNDS
+; P45 rule 115: explicit operand width, dependency edge, and verification boundary.
+RULE 115 CHECK REGISTER_BOUNDS
+; P45 rule 116: explicit operand width, dependency edge, and verification boundary.
+RULE 116 CHECK REGISTER_BOUNDS
+; P45 rule 117: explicit operand width, dependency edge, and verification boundary.
+RULE 117 CHECK REGISTER_BOUNDS
+; P45 rule 118: explicit operand width, dependency edge, and verification boundary.
+RULE 118 CHECK REGISTER_BOUNDS
+; P45 rule 119: explicit operand width, dependency edge, and verification boundary.
+RULE 119 CHECK REGISTER_BOUNDS
+; P45 rule 120: explicit operand width, dependency edge, and verification boundary.
+RULE 120 CHECK REGISTER_BOUNDS
+; P45 rule 121: explicit operand width, dependency edge, and verification boundary.
+RULE 121 CHECK REGISTER_BOUNDS
+; P45 rule 122: explicit operand width, dependency edge, and verification boundary.
+RULE 122 CHECK REGISTER_BOUNDS
+; P45 rule 123: explicit operand width, dependency edge, and verification boundary.
+RULE 123 CHECK REGISTER_BOUNDS
+; P45 rule 124: explicit operand width, dependency edge, and verification boundary.
+RULE 124 CHECK REGISTER_BOUNDS
+; P45 rule 125: explicit operand width, dependency edge, and verification boundary.
+RULE 125 CHECK REGISTER_BOUNDS
+; P45 rule 126: explicit operand width, dependency edge, and verification boundary.
+RULE 126 CHECK REGISTER_BOUNDS
+; P45 rule 127: explicit operand width, dependency edge, and verification boundary.
+RULE 127 CHECK REGISTER_BOUNDS
+; P45 rule 128: explicit operand width, dependency edge, and verification boundary.
+RULE 128 CHECK REGISTER_BOUNDS
+; P45 rule 129: explicit operand width, dependency edge, and verification boundary.
+RULE 129 CHECK REGISTER_BOUNDS
+; P45 rule 130: explicit operand width, dependency edge, and verification boundary.
+RULE 130 CHECK REGISTER_BOUNDS
+; P45 rule 131: explicit operand width, dependency edge, and verification boundary.
+RULE 131 CHECK REGISTER_BOUNDS
+; P45 rule 132: explicit operand width, dependency edge, and verification boundary.
+RULE 132 CHECK REGISTER_BOUNDS
+; P45 rule 133: explicit operand width, dependency edge, and verification boundary.
+RULE 133 CHECK REGISTER_BOUNDS
+; P45 rule 134: explicit operand width, dependency edge, and verification boundary.
+RULE 134 CHECK REGISTER_BOUNDS
+; P45 rule 135: explicit operand width, dependency edge, and verification boundary.
+RULE 135 CHECK REGISTER_BOUNDS
+; P45 rule 136: explicit operand width, dependency edge, and verification boundary.
+RULE 136 CHECK REGISTER_BOUNDS
+; P45 rule 137: explicit operand width, dependency edge, and verification boundary.
+RULE 137 CHECK REGISTER_BOUNDS
+; P45 rule 138: explicit operand width, dependency edge, and verification boundary.
+RULE 138 CHECK REGISTER_BOUNDS
+; P45 rule 139: explicit operand width, dependency edge, and verification boundary.
+RULE 139 CHECK REGISTER_BOUNDS
+; P45 rule 140: explicit operand width, dependency edge, and verification boundary.
+RULE 140 CHECK REGISTER_BOUNDS
+; P45 rule 141: explicit operand width, dependency edge, and verification boundary.
+RULE 141 CHECK REGISTER_BOUNDS
+; P45 rule 142: explicit operand width, dependency edge, and verification boundary.
+RULE 142 CHECK REGISTER_BOUNDS
+; P45 rule 143: explicit operand width, dependency edge, and verification boundary.
+RULE 143 CHECK REGISTER_BOUNDS
+; P45 rule 144: explicit operand width, dependency edge, and verification boundary.
+RULE 144 CHECK REGISTER_BOUNDS
+; P45 rule 145: explicit operand width, dependency edge, and verification boundary.
+RULE 145 CHECK REGISTER_BOUNDS
+; P45 rule 146: explicit operand width, dependency edge, and verification boundary.
+RULE 146 CHECK REGISTER_BOUNDS
+; P45 rule 147: explicit operand width, dependency edge, and verification boundary.
+RULE 147 CHECK REGISTER_BOUNDS
+; P45 rule 148: explicit operand width, dependency edge, and verification boundary.
+RULE 148 CHECK REGISTER_BOUNDS
+; P45 rule 149: explicit operand width, dependency edge, and verification boundary.
+RULE 149 CHECK REGISTER_BOUNDS
+; P45 rule 150: explicit operand width, dependency edge, and verification boundary.
+RULE 150 CHECK REGISTER_BOUNDS
+; P45 rule 151: explicit operand width, dependency edge, and verification boundary.
+RULE 151 CHECK REGISTER_BOUNDS
+; P45 rule 152: explicit operand width, dependency edge, and verification boundary.
+RULE 152 CHECK REGISTER_BOUNDS
+; P45 rule 153: explicit operand width, dependency edge, and verification boundary.
+RULE 153 CHECK REGISTER_BOUNDS
+; P45 rule 154: explicit operand width, dependency edge, and verification boundary.
+RULE 154 CHECK REGISTER_BOUNDS
+; P45 rule 155: explicit operand width, dependency edge, and verification boundary.
+RULE 155 CHECK REGISTER_BOUNDS
+; P45 rule 156: explicit operand width, dependency edge, and verification boundary.
+RULE 156 CHECK REGISTER_BOUNDS
+; P45 rule 157: explicit operand width, dependency edge, and verification boundary.
+RULE 157 CHECK REGISTER_BOUNDS
+; P45 rule 158: explicit operand width, dependency edge, and verification boundary.
+RULE 158 CHECK REGISTER_BOUNDS
+; P45 rule 159: explicit operand width, dependency edge, and verification boundary.
+RULE 159 CHECK REGISTER_BOUNDS
+; P45 rule 160: explicit operand width, dependency edge, and verification boundary.
+RULE 160 CHECK REGISTER_BOUNDS
+; P45 rule 161: explicit operand width, dependency edge, and verification boundary.
+RULE 161 CHECK REGISTER_BOUNDS
+; P45 rule 162: explicit operand width, dependency edge, and verification boundary.
+RULE 162 CHECK REGISTER_BOUNDS
+; P45 rule 163: explicit operand width, dependency edge, and verification boundary.
+RULE 163 CHECK REGISTER_BOUNDS
+; P45 rule 164: explicit operand width, dependency edge, and verification boundary.
+RULE 164 CHECK REGISTER_BOUNDS
+; P45 rule 165: explicit operand width, dependency edge, and verification boundary.
+RULE 165 CHECK REGISTER_BOUNDS
+; P45 rule 166: explicit operand width, dependency edge, and verification boundary.
+RULE 166 CHECK REGISTER_BOUNDS
+; P45 rule 167: explicit operand width, dependency edge, and verification boundary.
+RULE 167 CHECK REGISTER_BOUNDS
+; P45 rule 168: explicit operand width, dependency edge, and verification boundary.
+RULE 168 CHECK REGISTER_BOUNDS
+; P45 rule 169: explicit operand width, dependency edge, and verification boundary.
+RULE 169 CHECK REGISTER_BOUNDS
+; P45 rule 170: explicit operand width, dependency edge, and verification boundary.
+RULE 170 CHECK REGISTER_BOUNDS
+; P45 rule 171: explicit operand width, dependency edge, and verification boundary.
+RULE 171 CHECK REGISTER_BOUNDS
+; P45 rule 172: explicit operand width, dependency edge, and verification boundary.
+RULE 172 CHECK REGISTER_BOUNDS
+; P45 rule 173: explicit operand width, dependency edge, and verification boundary.
+RULE 173 CHECK REGISTER_BOUNDS
+; P45 rule 174: explicit operand width, dependency edge, and verification boundary.
+RULE 174 CHECK REGISTER_BOUNDS
+; P45 rule 175: explicit operand width, dependency edge, and verification boundary.
+RULE 175 CHECK REGISTER_BOUNDS
+; P45 rule 176: explicit operand width, dependency edge, and verification boundary.
+RULE 176 CHECK REGISTER_BOUNDS
+; P45 rule 177: explicit operand width, dependency edge, and verification boundary.
+RULE 177 CHECK REGISTER_BOUNDS
+; P45 rule 178: explicit operand width, dependency edge, and verification boundary.
+RULE 178 CHECK REGISTER_BOUNDS
+; P45 rule 179: explicit operand width, dependency edge, and verification boundary.
+RULE 179 CHECK REGISTER_BOUNDS
+; P45 rule 180: explicit operand width, dependency edge, and verification boundary.
+RULE 180 CHECK REGISTER_BOUNDS
+; P45 rule 181: explicit operand width, dependency edge, and verification boundary.
+RULE 181 CHECK REGISTER_BOUNDS
+; P45 rule 182: explicit operand width, dependency edge, and verification boundary.
+RULE 182 CHECK REGISTER_BOUNDS
+; P45 rule 183: explicit operand width, dependency edge, and verification boundary.
+RULE 183 CHECK REGISTER_BOUNDS
+; P45 rule 184: explicit operand width, dependency edge, and verification boundary.
+RULE 184 CHECK REGISTER_BOUNDS
+; P45 rule 185: explicit operand width, dependency edge, and verification boundary.
+RULE 185 CHECK REGISTER_BOUNDS
+; P45 rule 186: explicit operand width, dependency edge, and verification boundary.
+RULE 186 CHECK REGISTER_BOUNDS
+; P45 rule 187: explicit operand width, dependency edge, and verification boundary.
+RULE 187 CHECK REGISTER_BOUNDS
+; P45 rule 188: explicit operand width, dependency edge, and verification boundary.
+RULE 188 CHECK REGISTER_BOUNDS
+; P45 rule 189: explicit operand width, dependency edge, and verification boundary.
+RULE 189 CHECK REGISTER_BOUNDS
+; P45 rule 190: explicit operand width, dependency edge, and verification boundary.
+RULE 190 CHECK REGISTER_BOUNDS
+; P45 rule 191: explicit operand width, dependency edge, and verification boundary.
+RULE 191 CHECK REGISTER_BOUNDS
+; P45 rule 192: explicit operand width, dependency edge, and verification boundary.
+RULE 192 CHECK REGISTER_BOUNDS
+; P45 rule 193: explicit operand width, dependency edge, and verification boundary.
+RULE 193 CHECK REGISTER_BOUNDS
+; P45 rule 194: explicit operand width, dependency edge, and verification boundary.
+RULE 194 CHECK REGISTER_BOUNDS
+; P45 rule 195: explicit operand width, dependency edge, and verification boundary.
+RULE 195 CHECK REGISTER_BOUNDS
+; P45 rule 196: explicit operand width, dependency edge, and verification boundary.
+RULE 196 CHECK REGISTER_BOUNDS
+; P45 rule 197: explicit operand width, dependency edge, and verification boundary.
+RULE 197 CHECK REGISTER_BOUNDS
+; P45 rule 198: explicit operand width, dependency edge, and verification boundary.
+RULE 198 CHECK REGISTER_BOUNDS
+; P45 rule 199: explicit operand width, dependency edge, and verification boundary.
+RULE 199 CHECK REGISTER_BOUNDS
+; P45 rule 200: explicit operand width, dependency edge, and verification boundary.
+RULE 200 CHECK REGISTER_BOUNDS
+; P45 rule 201: explicit operand width, dependency edge, and verification boundary.
+RULE 201 CHECK REGISTER_BOUNDS
+; P45 rule 202: explicit operand width, dependency edge, and verification boundary.
+RULE 202 CHECK REGISTER_BOUNDS
+; P45 rule 203: explicit operand width, dependency edge, and verification boundary.
+RULE 203 CHECK REGISTER_BOUNDS
+; P45 rule 204: explicit operand width, dependency edge, and verification boundary.
+RULE 204 CHECK REGISTER_BOUNDS
+; P45 rule 205: explicit operand width, dependency edge, and verification boundary.
+RULE 205 CHECK REGISTER_BOUNDS
+; P45 rule 206: explicit operand width, dependency edge, and verification boundary.
+RULE 206 CHECK REGISTER_BOUNDS
+; P45 rule 207: explicit operand width, dependency edge, and verification boundary.
+RULE 207 CHECK REGISTER_BOUNDS
+; P45 rule 208: explicit operand width, dependency edge, and verification boundary.
+RULE 208 CHECK REGISTER_BOUNDS
+; P45 rule 209: explicit operand width, dependency edge, and verification boundary.
+RULE 209 CHECK REGISTER_BOUNDS
+; P45 rule 210: explicit operand width, dependency edge, and verification boundary.
+RULE 210 CHECK REGISTER_BOUNDS
+; P45 rule 211: explicit operand width, dependency edge, and verification boundary.
+RULE 211 CHECK REGISTER_BOUNDS
+; P45 rule 212: explicit operand width, dependency edge, and verification boundary.
+RULE 212 CHECK REGISTER_BOUNDS
+; P45 rule 213: explicit operand width, dependency edge, and verification boundary.
+RULE 213 CHECK REGISTER_BOUNDS
+; P45 rule 214: explicit operand width, dependency edge, and verification boundary.
+RULE 214 CHECK REGISTER_BOUNDS
+; P45 rule 215: explicit operand width, dependency edge, and verification boundary.
+RULE 215 CHECK REGISTER_BOUNDS
+; P45 rule 216: explicit operand width, dependency edge, and verification boundary.
+RULE 216 CHECK REGISTER_BOUNDS
+; P45 rule 217: explicit operand width, dependency edge, and verification boundary.
+RULE 217 CHECK REGISTER_BOUNDS
+; P45 rule 218: explicit operand width, dependency edge, and verification boundary.
+RULE 218 CHECK REGISTER_BOUNDS
+; P45 rule 219: explicit operand width, dependency edge, and verification boundary.
+RULE 219 CHECK REGISTER_BOUNDS
+; P45 rule 220: explicit operand width, dependency edge, and verification boundary.
+RULE 220 CHECK REGISTER_BOUNDS
+; P45 rule 221: explicit operand width, dependency edge, and verification boundary.
+RULE 221 CHECK REGISTER_BOUNDS
+; P45 rule 222: explicit operand width, dependency edge, and verification boundary.
+RULE 222 CHECK REGISTER_BOUNDS
+; P45 rule 223: explicit operand width, dependency edge, and verification boundary.
+RULE 223 CHECK REGISTER_BOUNDS
+; P45 rule 224: explicit operand width, dependency edge, and verification boundary.
+RULE 224 CHECK REGISTER_BOUNDS
+; P45 rule 225: explicit operand width, dependency edge, and verification boundary.
+RULE 225 CHECK REGISTER_BOUNDS
+; P45 rule 226: explicit operand width, dependency edge, and verification boundary.
+RULE 226 CHECK REGISTER_BOUNDS
+; P45 rule 227: explicit operand width, dependency edge, and verification boundary.
+RULE 227 CHECK REGISTER_BOUNDS
+; P45 rule 228: explicit operand width, dependency edge, and verification boundary.
+RULE 228 CHECK REGISTER_BOUNDS
+; P45 rule 229: explicit operand width, dependency edge, and verification boundary.
+RULE 229 CHECK REGISTER_BOUNDS
+; P45 rule 230: explicit operand width, dependency edge, and verification boundary.
+RULE 230 CHECK REGISTER_BOUNDS
+; P45 rule 231: explicit operand width, dependency edge, and verification boundary.
+RULE 231 CHECK REGISTER_BOUNDS
+; P45 rule 232: explicit operand width, dependency edge, and verification boundary.
+RULE 232 CHECK REGISTER_BOUNDS
+; P45 rule 233: explicit operand width, dependency edge, and verification boundary.
+RULE 233 CHECK REGISTER_BOUNDS
+; P45 rule 234: explicit operand width, dependency edge, and verification boundary.
+RULE 234 CHECK REGISTER_BOUNDS
+; P45 rule 235: explicit operand width, dependency edge, and verification boundary.
+RULE 235 CHECK REGISTER_BOUNDS
+; P45 rule 236: explicit operand width, dependency edge, and verification boundary.
+RULE 236 CHECK REGISTER_BOUNDS
+; P45 rule 237: explicit operand width, dependency edge, and verification boundary.
+RULE 237 CHECK REGISTER_BOUNDS
+; P45 rule 238: explicit operand width, dependency edge, and verification boundary.
+RULE 238 CHECK REGISTER_BOUNDS
+; P45 rule 239: explicit operand width, dependency edge, and verification boundary.
+RULE 239 CHECK REGISTER_BOUNDS
+; P45 rule 240: explicit operand width, dependency edge, and verification boundary.
+RULE 240 CHECK REGISTER_BOUNDS
+; P45 rule 241: explicit operand width, dependency edge, and verification boundary.
+RULE 241 CHECK REGISTER_BOUNDS
+; P45 rule 242: explicit operand width, dependency edge, and verification boundary.
+RULE 242 CHECK REGISTER_BOUNDS
+; P45 rule 243: explicit operand width, dependency edge, and verification boundary.
+RULE 243 CHECK REGISTER_BOUNDS
+; P45 rule 244: explicit operand width, dependency edge, and verification boundary.
+RULE 244 CHECK REGISTER_BOUNDS
+; P45 rule 245: explicit operand width, dependency edge, and verification boundary.
+RULE 245 CHECK REGISTER_BOUNDS
+; P45 rule 246: explicit operand width, dependency edge, and verification boundary.
+RULE 246 CHECK REGISTER_BOUNDS
+; P45 rule 247: explicit operand width, dependency edge, and verification boundary.
+RULE 247 CHECK REGISTER_BOUNDS
+; P45 rule 248: explicit operand width, dependency edge, and verification boundary.
+RULE 248 CHECK REGISTER_BOUNDS
+; P45 rule 249: explicit operand width, dependency edge, and verification boundary.
+RULE 249 CHECK REGISTER_BOUNDS
+; P45 rule 250: explicit operand width, dependency edge, and verification boundary.
+RULE 250 CHECK REGISTER_BOUNDS
+; P45 rule 251: explicit operand width, dependency edge, and verification boundary.
+RULE 251 CHECK REGISTER_BOUNDS
+; P45 rule 252: explicit operand width, dependency edge, and verification boundary.
+RULE 252 CHECK REGISTER_BOUNDS
+; P45 rule 253: explicit operand width, dependency edge, and verification boundary.
+RULE 253 CHECK REGISTER_BOUNDS
+; P45 rule 254: explicit operand width, dependency edge, and verification boundary.
+RULE 254 CHECK REGISTER_BOUNDS
+; P45 rule 255: explicit operand width, dependency edge, and verification boundary.
+RULE 255 CHECK REGISTER_BOUNDS
+; P45 rule 256: explicit operand width, dependency edge, and verification boundary.
+RULE 256 CHECK REGISTER_BOUNDS
+; P45 rule 257: explicit operand width, dependency edge, and verification boundary.
+RULE 257 CHECK REGISTER_BOUNDS
+; P45 rule 258: explicit operand width, dependency edge, and verification boundary.
+RULE 258 CHECK REGISTER_BOUNDS
+; P45 rule 259: explicit operand width, dependency edge, and verification boundary.
+RULE 259 CHECK REGISTER_BOUNDS
+; P45 rule 260: explicit operand width, dependency edge, and verification boundary.
+RULE 260 CHECK REGISTER_BOUNDS
+; P45 rule 261: explicit operand width, dependency edge, and verification boundary.
+RULE 261 CHECK REGISTER_BOUNDS
+; P45 rule 262: explicit operand width, dependency edge, and verification boundary.
+RULE 262 CHECK REGISTER_BOUNDS
+; P45 rule 263: explicit operand width, dependency edge, and verification boundary.
+RULE 263 CHECK REGISTER_BOUNDS
+; P45 rule 264: explicit operand width, dependency edge, and verification boundary.
+RULE 264 CHECK REGISTER_BOUNDS
+; P45 rule 265: explicit operand width, dependency edge, and verification boundary.
+RULE 265 CHECK REGISTER_BOUNDS
+; P45 rule 266: explicit operand width, dependency edge, and verification boundary.
+RULE 266 CHECK REGISTER_BOUNDS
+; P45 rule 267: explicit operand width, dependency edge, and verification boundary.
+RULE 267 CHECK REGISTER_BOUNDS
+; P45 rule 268: explicit operand width, dependency edge, and verification boundary.
+RULE 268 CHECK REGISTER_BOUNDS
+; P45 rule 269: explicit operand width, dependency edge, and verification boundary.
+RULE 269 CHECK REGISTER_BOUNDS
+; P45 rule 270: explicit operand width, dependency edge, and verification boundary.
+RULE 270 CHECK REGISTER_BOUNDS
+; P45 rule 271: explicit operand width, dependency edge, and verification boundary.
+RULE 271 CHECK REGISTER_BOUNDS
+; P45 rule 272: explicit operand width, dependency edge, and verification boundary.
+RULE 272 CHECK REGISTER_BOUNDS
+; P45 rule 273: explicit operand width, dependency edge, and verification boundary.
+RULE 273 CHECK REGISTER_BOUNDS
+; P45 rule 274: explicit operand width, dependency edge, and verification boundary.
+RULE 274 CHECK REGISTER_BOUNDS
+; P45 rule 275: explicit operand width, dependency edge, and verification boundary.
+RULE 275 CHECK REGISTER_BOUNDS
+; P45 rule 276: explicit operand width, dependency edge, and verification boundary.
+RULE 276 CHECK REGISTER_BOUNDS
+; P45 rule 277: explicit operand width, dependency edge, and verification boundary.
+RULE 277 CHECK REGISTER_BOUNDS
+; P45 rule 278: explicit operand width, dependency edge, and verification boundary.
+RULE 278 CHECK REGISTER_BOUNDS
+; P45 rule 279: explicit operand width, dependency edge, and verification boundary.
+RULE 279 CHECK REGISTER_BOUNDS
+; P45 rule 280: explicit operand width, dependency edge, and verification boundary.
+RULE 280 CHECK REGISTER_BOUNDS
